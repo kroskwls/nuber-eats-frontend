@@ -12,13 +12,13 @@ interface ICoords {
 	lng: number;
 }
 
-interface IDriverProps {
-	lat: number;
-	lng: number;
-	$hover?: any;
-}
+// interface IDriverProps {
+// 	lat: number;
+// 	lng: number;
+// 	$hover?: any;
+// }
 
-const Driver: React.FC<IDriverProps> = () => <div className='text-lg'>🛵</div>;
+// const Driver: React.FC<IDriverProps> = () => <div className='text-lg'>🛵</div>;
 
 export const Dashboard = () => {
 	const [map, setMap] = useState<google.maps.Map>();
