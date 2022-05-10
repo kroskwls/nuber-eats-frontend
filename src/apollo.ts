@@ -1,5 +1,5 @@
 import { ApolloClient, createHttpLink, InMemoryCache, makeVar, split } from '@apollo/client';
-import { LOCALSTORAGE_TOKEN, SERVER_URI } from './constants';
+import { DEV_URI, LOCALSTORAGE_TOKEN, PROD_URI } from './constants';
 import { setContext } from '@apollo/client/link/context';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
@@ -10,7 +10,7 @@ export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
 const wsLink = new WebSocketLink({
-	uri: `ws:${SERVER_URI}`,
+	uri: process.env.NODE_ENV === 'production' ? `ws:${PROD_URI}/graphql` : `ws:${DEV_URI}/graphql`,
 	options: {
 		reconnect: true,
 		connectionParams: {
@@ -19,7 +19,7 @@ const wsLink = new WebSocketLink({
 	}
 });
 const httpLink = createHttpLink({
-	uri: `http://${SERVER_URI}`,
+	uri: process.env.NODE_ENV === 'production' ? `https://${PROD_URI}/graphql` : `http://${DEV_URI}/graphql`,
 });
 const authLink = setContext((_, { headers }) => {
 	return {
