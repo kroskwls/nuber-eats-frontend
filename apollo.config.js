@@ -4,7 +4,7 @@ module.exports = {
 		tagName: 'gql',
 		service: {
 			name: 'nuber-eats-backend',
-			url: 'http://192.168.06:4000/graphql'
+			url: 'http://localhost:4000/graphql'
 		}
 	}
 };

@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/tailwind.css';
 import { App } from './components/app';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
 import { client } from './apollo';
 import { HelmetProvider } from 'react-helmet-async';
+// import './styles/tailwind.css';
+import './styles/styles.css';
 
 ReactDOM.render(
 	<React.StrictMode>
