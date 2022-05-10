@@ -35,7 +35,7 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"tailwind:build": "cross-env NODE_ENV=production tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css",
+		"tailwind:build": "cross-env NODE_ENV=production tailwind build -i ./src/styles/tailwind.css -o ./src/styles/styles.css",
 		"build": "CI=false react-scripts build",
 		"prebuild": "npm run tailwind:build",
 		"test": "react-scripts test --verbose",
