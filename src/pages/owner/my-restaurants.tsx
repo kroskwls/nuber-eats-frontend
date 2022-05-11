@@ -20,9 +20,7 @@ export const MyRestaurants = () => {
 					to='/add-restaurant'
 				>Create Restaurant →</Link>
 				{data?.myRestaurants.ok && data.myRestaurants.restaurants?.length === 0 ? (
-					<>
-						<h4 className=''>You have no restaurants.</h4>
-					</>
+					<h4 className='mt-5'>You have no restaurants.</h4>
 				) : (
 					<div className='grid md:grid-cols-3 gap-x-5 gap-y-10 mt-16'>
 						{data?.myRestaurants.restaurants?.map(restaurant => (
