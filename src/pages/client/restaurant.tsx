@@ -219,7 +219,7 @@ export const RestaurantDetail = () => {
 					<span>Total : ${totalPrice}</span>
 				</div>
 				<div className='w-full grid lg:grid-cols-3 gap-x-5 gap-y-10 mt-10'>
-					{data?.restaurant.restaurant?.menu?.map((dish, i) => (
+					{data?.restaurant.restaurant?.menu?.filter(_ => true).sort((a, b) => a.id - b.id).map((dish, i) => (
 						<Dish
 							key={i}
 							id={dish.id}

@@ -44,7 +44,12 @@ export const MyRestaurant = () => {
 			history.push(`/orders/${id}`);
 		}
 	}, [subscriptionData, history]);
-
+	if (data?.myRestaurant.restaurant?.menu) {
+		console.log(data?.myRestaurant.restaurant?.menu?.filter(_ => true).sort((a, b) => {
+			return a.id - b.id;
+		}));
+	}
+	
 	return (
 		<>
 			{loading ? (
@@ -75,7 +80,7 @@ export const MyRestaurant = () => {
 									<h4 className='text-xl'>Please add a dish.</h4>
 								) : (
 									<div className='grid lg:grid-cols-3 gap-x-5 gap-y-10 mt-16'>
-										{data?.myRestaurant.restaurant?.menu?.map((dish, i) => (
+										{data?.myRestaurant.restaurant?.menu?.filter(_ => true).sort((a, b) => a.id - b.id).map((dish, i) => (
 											<Dish
 												key={i}
 												name={dish.name}
