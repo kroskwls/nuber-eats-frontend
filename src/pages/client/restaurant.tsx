@@ -227,7 +227,6 @@ export const RestaurantDetail = () => {
 							price={dish.price}
 							description={dish.description}
 							photo={dish.photo}
-							isCustomer={true}
 							options={dish.options}
 							orderStarted={orderStarted}
 							isSelected={isSelected(dish.id)}

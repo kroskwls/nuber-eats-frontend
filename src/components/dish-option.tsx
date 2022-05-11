@@ -2,9 +2,9 @@ import React from 'react';
 import { OneRestaurantQuery_restaurant_restaurant_menu_options_choices } from '../__generated__/OneRestaurantQuery';
 
 interface IDishOptionProps {
-	isOptionSelected: boolean;
-	isOptionChoiceSelected: (dishId: number, name: string, choiceName: string) => boolean;
-	addOptionToItem: (dishId: number, name: string, choiceName?: string) => void;
+	isOptionSelected?: boolean;
+	isOptionChoiceSelected?: (dishId: number, name: string, choiceName: string) => boolean;
+	addOptionToItem?: (dishId: number, name: string, choiceName?: string) => void;
 	name: string;
 	extra: number | null;
 	dishId: number;
@@ -23,8 +23,8 @@ export const DishOption: React.FC<IDishOptionProps> = ({
 	return (
 		<div>
 			<span
-				className={`px-2 py-1 ${choices?.length === 0 ? 'border hover:cursor-pointer' : ''} ${isOptionSelected ? 'border-gray-800' : ''}`}
-				onClick={() => choices?.length === 0 && addOptionToItem(dishId, name)}
+				className={`px-2 py-1 ${choices?.length === 0 && addOptionToItem ? 'border hover:cursor-pointer' : ''} ${isOptionSelected ? 'border-gray-800' : ''}`}
+				onClick={() => choices?.length === 0 && addOptionToItem && addOptionToItem(dishId, name)}
 			>
 				<span className='mr-2'>{name}</span>
 				{extra !== 0 && <span className='text-sm opacity-75'>(${extra})</span>}
@@ -33,8 +33,8 @@ export const DishOption: React.FC<IDishOptionProps> = ({
 				{choices?.length !== 0 &&
 					choices?.map((choice, cIdx) => (
 						<div key={cIdx} 
-							className={`border px-2 py-1 ml-6 hover:cursor-pointer ${isOptionChoiceSelected(dishId, name, choice.name) ? 'border-gray-800' : ''}`}
-							onClick={() => addOptionToItem(dishId, name, choice.name)}
+							className={`px-2 py-1 ml-6 ${addOptionToItem ? 'border hover:cursor-pointer' : ''} ${isOptionChoiceSelected && isOptionChoiceSelected(dishId, name, choice.name) ? 'border-gray-800' : ''}`}
+							onClick={() => addOptionToItem && addOptionToItem(dishId, name, choice.name)}
 						>
 							<span className='mr-2'>{choice.name}</span>
 							<span className='text-sm opacity-75'>(${choice.extra})</span>

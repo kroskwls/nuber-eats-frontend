@@ -7,7 +7,6 @@ interface IDishProps {
 	price: number;
 	description: string;
 	photo: string | null;
-	isCustomer?: boolean;
 	options?: OneRestaurantQuery_restaurant_restaurant_menu_options[] | null;
 	orderStarted?: boolean;
 	addItemToOrder?: (dishId: number) => void;
@@ -21,7 +20,6 @@ export const Dish: React.FC<IDishProps> = ({
 	price,
 	description,
 	photo,
-	isCustomer = false,
 	options,
 	orderStarted = false,
 	isSelected,
@@ -29,6 +27,7 @@ export const Dish: React.FC<IDishProps> = ({
 	removeFromOrder,
 	children: dishOptions,
 }) => {
+	console.log(dishOptions)
 	const onClickDish = () => {
 		if (!orderStarted) {
 			return;
@@ -40,6 +39,7 @@ export const Dish: React.FC<IDishProps> = ({
 			removeFromOrder && removeFromOrder(id);
 		}
 	};
+	console.log(options && options?.length !== 0);
 
 	return (
 		<div className={`p-3 border transition-all flex flex-col ${isSelected ? 'border-gray-800' : ''}`}>
@@ -58,7 +58,7 @@ export const Dish: React.FC<IDishProps> = ({
 				</div>
 				<div className='w-32 h-32 ml-3 bg-lime-300' style={{ backgroundImage: `url(${photo})`, backgroundSize: '100% 100%' }} />
 			</div>
-			{isCustomer && options && options?.length !== 0 &&
+			{options && options?.length !== 0 &&
 				<div>
 					<h5 className='mt-5 mb-3 font-semibold'>Dish Options:</h5>
 					<div className='grid gap-2 justify-start'>{dishOptions}</div>

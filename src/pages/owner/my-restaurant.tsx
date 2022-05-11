@@ -7,6 +7,7 @@ import { MyRestaurantQuery, MyRestaurantQueryVariables } from '../../__generated
 import { VictoryAxis, VictoryChart, VictoryLabel, VictoryLine, VictoryVoronoiContainer } from 'victory';
 import { PENDING_ORDER_SUBSCRIPTION } from '../../graphql/subscriptions';
 import { PendingOrdersSubsciption } from '../../__generated__/PendingOrdersSubsciption';
+import { DishOption } from '../../components/dish-option';
 
 interface IParams {
 	id: string;
@@ -43,7 +44,7 @@ export const MyRestaurant = () => {
 			history.push(`/orders/${id}`);
 		}
 	}, [subscriptionData, history]);
-	
+
 	return (
 		<>
 			{loading ? (
@@ -80,8 +81,19 @@ export const MyRestaurant = () => {
 												name={dish.name}
 												price={dish.price}
 												description={dish.description}
+												options={dish.options}
 												photo={dish.photo}
-											/>
+											>
+												{dish.options?.map((option, index) => (
+													<DishOption
+														key={index}
+														dishId={dish.id}
+														name={option.name}
+														extra={option.extra}
+														choices={option.choices}
+													/>
+												))}
+											</Dish>
 										))}
 									</div>
 								)}
