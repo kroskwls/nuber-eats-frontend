@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button } from '../../components/button';
 import { FormError } from '../../components/form-error';
+import { DEV_URI, PROD_URI } from '../../constants';
 import { CREATE_DISH_MUTATION } from '../../graphql/mutations';
 import { MY_RESTAURANT_QUERY } from '../../graphql/queries';
 import { CreateDishMutation, CreateDishMutationVariables } from '../../__generated__/CreateDishMutation';
@@ -66,10 +67,11 @@ export const AddDish = () => {
 			if (file.length > 0) {
 				const data = new FormData();
 				data.append('file', file[0]);
+				const fileServer = process.env.NODE_ENV === 'production' ? `https://${PROD_URI}/uploads/` : `http://${DEV_URI}/uploads/`;
 				const { url } = await (
-					await fetch('http://localhost:4000/uploads/', {
-						method: 'post',
-						body: data
+					await fetch(fileServer, { 
+						method: 'post', 
+						body: data 
 					})
 				).json();
 				photo = url;
@@ -88,7 +90,7 @@ export const AddDish = () => {
 			});
 		} catch (error) {
 			console.log(error)
-		 }
+		}
 	};
 	const [optionsNumber, setOptionsNumber] = useState<number[]>([]);
 	const onAddOptionClick = () => {
