@@ -27,7 +27,6 @@ export const Dish: React.FC<IDishProps> = ({
 	removeFromOrder,
 	children: dishOptions,
 }) => {
-	console.log(dishOptions)
 	const onClickDish = () => {
 		if (!orderStarted) {
 			return;
@@ -39,8 +38,7 @@ export const Dish: React.FC<IDishProps> = ({
 			removeFromOrder && removeFromOrder(id);
 		}
 	};
-	console.log(options && options?.length !== 0);
-
+	
 	return (
 		<div className={`p-3 border transition-all flex flex-col ${isSelected ? 'border-gray-800' : ''}`}>
 			{orderStarted &&
