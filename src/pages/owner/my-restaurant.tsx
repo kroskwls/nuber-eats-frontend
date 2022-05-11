@@ -75,7 +75,7 @@ export const MyRestaurant = () => {
 								className='text-white bg-lime-700 py-3 px-10'
 								to='/buy-promotion'
 							>Buy Promotion →</Link>
-							<div className='mt-10'>
+							<div className='my-10'>
 								{data?.myRestaurant.restaurant?.menu?.length === 0 ? (
 									<h4 className='text-xl'>Please add a dish.</h4>
 								) : (
@@ -104,7 +104,7 @@ export const MyRestaurant = () => {
 								)}
 							</div>
 							{chartData.length > 0 &&
-								<div className='my-20'>
+								<div className='mt-10 mb-20'>
 									<h4 className='text-center text-2xl font-semibold'>Sales</h4>
 									<div className=''>
 										<VictoryChart
