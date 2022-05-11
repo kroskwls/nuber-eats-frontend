@@ -25,3 +25,11 @@
 .btn-color-none {
 	@apply text-white py-4 text-lg font-semibold transition-colors;
 }
+
+.line-overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}

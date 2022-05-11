@@ -33,7 +33,7 @@ export const DishOption: React.FC<IDishOptionProps> = ({
 				{choices?.length !== 0 &&
 					choices?.map((choice, cIdx) => (
 						<div key={cIdx} 
-							className={`border px-2 py-1 ml-6 ${isOptionChoiceSelected(dishId, name, choice.name) ? 'border-gray-800' : 'hover:cursor-pointer'}`}
+							className={`border px-2 py-1 ml-6 hover:cursor-pointer ${isOptionChoiceSelected(dishId, name, choice.name) ? 'border-gray-800' : ''}`}
 							onClick={() => addOptionToItem(dishId, name, choice.name)}
 						>
 							<span className='mr-2'>{choice.name}</span>

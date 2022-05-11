@@ -5,8 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
 import { client } from './apollo';
 import { HelmetProvider } from 'react-helmet-async';
-// import './styles/tailwind.css';
-import './styles/styles.css';
+
+if (process.env.NODE_ENV === 'production') {
+	// @ts-ignore
+    import('./styles/styles.css');
+} else {
+	// @ts-ignore
+    import('./styles/tailwind.css');
+}
 
 ReactDOM.render(
 	<React.StrictMode>

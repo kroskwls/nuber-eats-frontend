@@ -50,7 +50,7 @@ export const RestaurantDetail = () => {
 			}
 		}
 
-		setTotalPrice(total);
+		setTotalPrice(+total.toFixed(2));
 	};
 	const triggerStartOrder = () => {
 		setOrderStarted(true);
