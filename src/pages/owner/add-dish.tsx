@@ -128,6 +128,7 @@ export const AddDish = () => {
 					<input
 						className='input'
 						type='number'
+						step={0.01}
 						min={0}
 						placeholder='Price'
 						{...register('price', {
@@ -170,6 +171,7 @@ export const AddDish = () => {
 										{...register(`${id}-optionExtra`)}
 										className='py-2 px-4 w-32 focus:outline-none focus:border-gray-600 border-2'
 										type='number'
+										step={0.01}
 										placeholder='Extra Price'
 										min={0}
 									/>
@@ -194,6 +196,7 @@ export const AddDish = () => {
 												{...register(`${choiceId}-choiceExtra`)}
 												className='py-2 px-4 w-32 focus:outline-none focus:border-gray-600 border-2'
 												type='number'
+												step={0.01}
 												placeholder='Extra Price'
 												min={0}
 											/>
