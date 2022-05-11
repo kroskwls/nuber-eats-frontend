@@ -62,16 +62,18 @@ export const AddDish = () => {
 					choices
 				};
 			});
-			const data = new FormData();
-			data.append('file', file[0]);
-			const { url: photo } = await (
-				await fetch('http://localhost:4000/uploads/', {
-					method: 'post',
-					body: data
-				})
-			).json();
-			console.log(photo);
-
+			let photo;
+			if (file.length > 0) {
+				const data = new FormData();
+				data.append('file', file[0]);
+				const { url } = await (
+					await fetch('http://localhost:4000/uploads/', {
+						method: 'post',
+						body: data
+					})
+				).json();
+				photo = url;
+			}
 			createDishMutation({
 				variables: {
 					input: {
@@ -80,11 +82,13 @@ export const AddDish = () => {
 						price: +price,
 						description,
 						options,
-						photo
+						...(photo && { photo })
 					}
 				}
 			});
-		} catch (error) { }
+		} catch (error) {
+			console.log(error)
+		 }
 	};
 	const [optionsNumber, setOptionsNumber] = useState<number[]>([]);
 	const onAddOptionClick = () => {
@@ -148,9 +152,7 @@ export const AddDish = () => {
 						<input
 							type='file'
 							accept='image/*'
-							{...register('file', {
-								required: 'Cover image is required.'
-							})}
+							{...register('file')}
 						/>
 					</div>
 					<div className='my-10'>
