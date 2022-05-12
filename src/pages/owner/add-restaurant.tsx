@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../components/button';
 import { FormError } from '../../components/form-error';
+import { DEV_URI, PROD_URI } from '../../constants';
 import { CREATE_RESTAURANT_MUTATION } from '../../graphql/mutations';
 import { MY_RESTAURANTS_QUERY } from '../../graphql/queries';
 import { CreateRestaurantMutation, CreateRestaurantMutationVariables } from '../../__generated__/CreateRestaurantMutation';
@@ -68,8 +69,9 @@ export const AddRestaurant = () => {
 			const { file, name, categoryName, address } = getValues();
 			const data = new FormData();
 			data.append('file', file[0]);
+			const fileServer = process.env.NODE_ENV === 'production' ? `https://${PROD_URI}/uploads/` : `http://${DEV_URI}/uploads/`;
 			const { url: coverImage } = await (
-				await fetch('http://localhost:4000/uploads/', {
+				await fetch(fileServer, {
 					method: 'post',
 					body: data
 				})
