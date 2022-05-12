@@ -44,11 +44,6 @@ export const MyRestaurant = () => {
 			history.push(`/orders/${id}`);
 		}
 	}, [subscriptionData, history]);
-	if (data?.myRestaurant.restaurant?.menu) {
-		console.log(data?.myRestaurant.restaurant?.menu?.filter(_ => true).sort((a, b) => {
-			return a.id - b.id;
-		}));
-	}
 	
 	return (
 		<>

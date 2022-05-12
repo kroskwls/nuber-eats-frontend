@@ -38,23 +38,22 @@ export const Dish: React.FC<IDishProps> = ({
 			removeFromOrder && removeFromOrder(id);
 		}
 	};
-	
+	console.log(window.innerWidth);
+
 	return (
 		<div className={`p-3 border transition-all flex flex-col ${isSelected ? 'border-gray-800' : ''}`}>
-			{orderStarted &&
-				<button className={`w-32 py-2 mb-3 focus:outline-none text-sm text-white ${isSelected ? 'bg-red-500' : 'bg-lime-500'}`} onClick={onClickDish}>
-					{isSelected ? 'Remove' : 'Add'}
-				</button>
-			}
-			<div className='flex justify-between'>
-				<div className='flex flex-col justify-between' style={{ width: 'calc(100% - 128px)' }}>
-					<div className='flex flex-col'>
-						<h3 className='mb-2 text-lg font-semibold truncate' title={name}>{name}</h3>
-						<h4 className='text-sm font-medium line-overflow' title={description}>{description}</h4>
-					</div>
-					<p className='text-sm'>${price}</p>
+			<div className='grid gap-3'>
+				<div className='flex justify-between'>
+					<h3 className='text-lg font-semibold title-overflow' title={name}>{name}</h3>
+					{orderStarted &&
+						<button className={`px-7 ml-3 focus:outline-none text-sm text-white ${isSelected ? 'bg-red-500' : 'bg-lime-500'}`} onClick={onClickDish}>
+							{isSelected ? 'Remove' : 'Add'}
+						</button>
+					}
 				</div>
-				<div className='w-32 h-32 ml-3 bg-lime-300' style={{ backgroundImage: `url(${photo})`, backgroundSize: '100% 100%' }} />
+				<div className='flex bg-lime-300 py-32 bg-cover bg-center' style={{ backgroundImage: `url(${photo})` }} />
+				<h4 className='text-sm font-medium' title={description}>{description}</h4>
+				<p className='text-sm'>${price}</p>
 			</div>
 			{options && options?.length !== 0 &&
 				<div>
