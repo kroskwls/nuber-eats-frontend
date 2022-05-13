@@ -27,6 +27,7 @@ export interface FullOrderParts_restaurant {
 export interface FullOrderParts_items_dish {
   __typename: "Dish";
   name: string;
+  photo: string | null;
 }
 
 export interface FullOrderParts_items_options {

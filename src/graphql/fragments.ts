@@ -67,6 +67,7 @@ export const FULL_ORDER_FRAGMENT = gql`
 		items {
 			dish {
 				name
+				photo
 			}
 			options {
 				name

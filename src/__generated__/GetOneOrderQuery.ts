@@ -27,6 +27,7 @@ export interface GetOneOrderQuery_getOneOrder_order_restaurant {
 export interface GetOneOrderQuery_getOneOrder_order_items_dish {
   __typename: "Dish";
   name: string;
+  photo: string | null;
 }
 
 export interface GetOneOrderQuery_getOneOrder_order_items_options {

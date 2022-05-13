@@ -27,6 +27,7 @@ export interface OrderUpdatesSubscription_orderUpdates_restaurant {
 export interface OrderUpdatesSubscription_orderUpdates_items_dish {
   __typename: "Dish";
   name: string;
+  photo: string | null;
 }
 
 export interface OrderUpdatesSubscription_orderUpdates_items_options {

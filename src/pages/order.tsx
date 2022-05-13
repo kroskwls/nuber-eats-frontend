@@ -169,16 +169,19 @@ export const Order = () => {
 					<div className='p-5 grid gap-6'>
 						{data?.getOneOrder.order?.items.map(item => (
 							<div className='border-b border-black pb-6'>
-								<div className='flex justify-between text-xl'>
-									<h5>{item.dish.name}</h5>
+								<div className='flex'>
+									<div className='p-14 bg-black bg-cover bg-center' style={{ backgroundImage: `url(${item.dish.photo})` }} />
+									<div className='ml-5'>
+										<h5 className='text-xl'>{item.dish.name}</h5>
+										<h6 className='indent-5 text-sm text-gray-500'>
+											{item.options?.map(option => (
+												<div>
+													{option.name} {option.choice}
+												</div>
+											))}
+										</h6>
+									</div>
 								</div>
-								<h6 className='indent-5 text-sm text-gray-500'>
-									{item.options?.map(option => (
-										<div>
-											{option.name} {option.choice}
-										</div>
-									))}
-								</h6>
 							</div>
 						))}
 					</div>

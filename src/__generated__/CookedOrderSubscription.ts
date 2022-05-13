@@ -27,6 +27,7 @@ export interface CookedOrderSubscription_cookedOrders_restaurant {
 export interface CookedOrderSubscription_cookedOrders_items_dish {
   __typename: "Dish";
   name: string;
+  photo: string | null;
 }
 
 export interface CookedOrderSubscription_cookedOrders_items_options {

@@ -27,6 +27,7 @@ export interface PendingOrdersSubsciption_pendingOrders_restaurant {
 export interface PendingOrdersSubsciption_pendingOrders_items_dish {
   __typename: "Dish";
   name: string;
+  photo: string | null;
 }
 
 export interface PendingOrdersSubsciption_pendingOrders_items_options {
