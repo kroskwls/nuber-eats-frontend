@@ -160,7 +160,7 @@ export const RestaurantDetail = () => {
 			window.alert('Can\'t place empty order');
 			return;
 		}
-		const ok = window.confirm('You are about to place an order');
+		const ok = window.confirm(`You are about to place an order.\nTotal: $${totalPrice}`);
 		if (ok) {
 			createOrderMutation({
 				variables: {
@@ -200,23 +200,27 @@ export const RestaurantDetail = () => {
 				</div>
 			</div>
 			<div className='container pb-32 mt-20 flex flex-col items-end'>
-				{!orderStarted && (
-					<button className='btn px-10' onClick={triggerStartOrder}>
-						Start Order
-					</button>
-				)}
-				{orderStarted && (
-					<div className='flex'>
-						<button className='btn px-10 mr-3' onClick={triggerComfirmOrder}>
-							Comfirm Order
+				<div className='sticky top-0 bg-white shadow-xl z-10'>
+					{!orderStarted && (
+						<button className='btn px-10' onClick={triggerStartOrder}>
+							Start Order
 						</button>
-						<button className='btn-color-none px-10 bg-black' onClick={triggerCancelOrder}>
-							Cancel Order
-						</button>
-					</div>
-				)}
-				<div className='mt-5 mr-10 text-3xl'>
-					<span>Total : ${totalPrice}</span>
+					)}
+					{orderStarted && (
+						<>
+							<div className='flex'>
+								<button className='btn px-10 mr-3' onClick={triggerComfirmOrder}>
+									Comfirm Order
+								</button>
+								<button className='btn-color-none px-10 bg-black' onClick={triggerCancelOrder}>
+									Cancel Order
+								</button>
+							</div>
+							<div className='my-5 mr-10 text-3xl flex justify-end'>
+								<span>Total : ${totalPrice}</span>
+							</div>
+						</>
+					)}
 				</div>
 				<div className='w-full grid lg:grid-cols-3 gap-x-5 gap-y-10 mt-10'>
 					{data?.restaurant.restaurant?.menu?.filter(_ => true).sort((a, b) => a.id - b.id).map((dish, i) => (
