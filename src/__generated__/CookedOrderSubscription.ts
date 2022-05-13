@@ -24,6 +24,23 @@ export interface CookedOrderSubscription_cookedOrders_restaurant {
   name: string;
 }
 
+export interface CookedOrderSubscription_cookedOrders_items_dish {
+  __typename: "Dish";
+  name: string;
+}
+
+export interface CookedOrderSubscription_cookedOrders_items_options {
+  __typename: "OrderItemOption";
+  name: string;
+  choice: string | null;
+}
+
+export interface CookedOrderSubscription_cookedOrders_items {
+  __typename: "OrderItem";
+  dish: CookedOrderSubscription_cookedOrders_items_dish;
+  options: CookedOrderSubscription_cookedOrders_items_options[] | null;
+}
+
 export interface CookedOrderSubscription_cookedOrders {
   __typename: "Order";
   id: number;
@@ -32,6 +49,7 @@ export interface CookedOrderSubscription_cookedOrders {
   driver: CookedOrderSubscription_cookedOrders_driver | null;
   customer: CookedOrderSubscription_cookedOrders_customer | null;
   restaurant: CookedOrderSubscription_cookedOrders_restaurant | null;
+  items: CookedOrderSubscription_cookedOrders_items[];
 }
 
 export interface CookedOrderSubscription {

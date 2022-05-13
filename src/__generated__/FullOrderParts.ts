@@ -24,6 +24,23 @@ export interface FullOrderParts_restaurant {
   name: string;
 }
 
+export interface FullOrderParts_items_dish {
+  __typename: "Dish";
+  name: string;
+}
+
+export interface FullOrderParts_items_options {
+  __typename: "OrderItemOption";
+  name: string;
+  choice: string | null;
+}
+
+export interface FullOrderParts_items {
+  __typename: "OrderItem";
+  dish: FullOrderParts_items_dish;
+  options: FullOrderParts_items_options[] | null;
+}
+
 export interface FullOrderParts {
   __typename: "Order";
   id: number;
@@ -32,4 +49,5 @@ export interface FullOrderParts {
   driver: FullOrderParts_driver | null;
   customer: FullOrderParts_customer | null;
   restaurant: FullOrderParts_restaurant | null;
+  items: FullOrderParts_items[];
 }

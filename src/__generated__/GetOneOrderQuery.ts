@@ -24,6 +24,23 @@ export interface GetOneOrderQuery_getOneOrder_order_restaurant {
   name: string;
 }
 
+export interface GetOneOrderQuery_getOneOrder_order_items_dish {
+  __typename: "Dish";
+  name: string;
+}
+
+export interface GetOneOrderQuery_getOneOrder_order_items_options {
+  __typename: "OrderItemOption";
+  name: string;
+  choice: string | null;
+}
+
+export interface GetOneOrderQuery_getOneOrder_order_items {
+  __typename: "OrderItem";
+  dish: GetOneOrderQuery_getOneOrder_order_items_dish;
+  options: GetOneOrderQuery_getOneOrder_order_items_options[] | null;
+}
+
 export interface GetOneOrderQuery_getOneOrder_order {
   __typename: "Order";
   id: number;
@@ -32,6 +49,7 @@ export interface GetOneOrderQuery_getOneOrder_order {
   driver: GetOneOrderQuery_getOneOrder_order_driver | null;
   customer: GetOneOrderQuery_getOneOrder_order_customer | null;
   restaurant: GetOneOrderQuery_getOneOrder_order_restaurant | null;
+  items: GetOneOrderQuery_getOneOrder_order_items[];
 }
 
 export interface GetOneOrderQuery_getOneOrder {

@@ -64,5 +64,14 @@ export const FULL_ORDER_FRAGMENT = gql`
 		restaurant {
 			name
 		}
+		items {
+			dish {
+				name
+			}
+			options {
+				name
+				choice
+			}
+		}
 	}	
 `;

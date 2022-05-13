@@ -24,6 +24,23 @@ export interface OrderUpdatesSubscription_orderUpdates_restaurant {
   name: string;
 }
 
+export interface OrderUpdatesSubscription_orderUpdates_items_dish {
+  __typename: "Dish";
+  name: string;
+}
+
+export interface OrderUpdatesSubscription_orderUpdates_items_options {
+  __typename: "OrderItemOption";
+  name: string;
+  choice: string | null;
+}
+
+export interface OrderUpdatesSubscription_orderUpdates_items {
+  __typename: "OrderItem";
+  dish: OrderUpdatesSubscription_orderUpdates_items_dish;
+  options: OrderUpdatesSubscription_orderUpdates_items_options[] | null;
+}
+
 export interface OrderUpdatesSubscription_orderUpdates {
   __typename: "Order";
   id: number;
@@ -32,6 +49,7 @@ export interface OrderUpdatesSubscription_orderUpdates {
   driver: OrderUpdatesSubscription_orderUpdates_driver | null;
   customer: OrderUpdatesSubscription_orderUpdates_customer | null;
   restaurant: OrderUpdatesSubscription_orderUpdates_restaurant | null;
+  items: OrderUpdatesSubscription_orderUpdates_items[];
 }
 
 export interface OrderUpdatesSubscription {

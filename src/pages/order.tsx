@@ -73,14 +73,15 @@ export const Order = () => {
 			});
 		}
 	}, [data, orderId, subscribeToMore]);
+	console.log(data);
 
 	return (
 		<div className='container-wrapper py-5 sm:py-32'>
 			<Helmet>
 				<title>Order #{orderId} | Nuber Eats</title>
 			</Helmet>
-			<div className='flex justify-center'>
-				<div className='border border-gray-800 w-full max-w-screen-sm'>
+			<div className='flex flex-col items-center'>
+				<div className='border border-gray-800 w-full max-w-screen-sm mb-10'>
 					<h4 className='bg-gray-800 w-full py-5 text-white text-center text-xl'>
 						Order #{orderId}
 					</h4>
@@ -115,36 +116,36 @@ export const Order = () => {
 					{userData?.me.role === UserRole.Owner && (
 						<div className='px-5 pb-5'>
 							{data?.getOneOrder.order?.status === OrderStatus.Pending && (
-								<button 
-									onClick={() => onClickButton(OrderStatus.Cooking)} 
+								<button
+									onClick={() => onClickButton(OrderStatus.Cooking)}
 									className='btn px-5 w-full'
 								>Accept Order</button>
 							)}
 							{data?.getOneOrder.order?.status === OrderStatus.Cooking && (
-								<button 
-									onClick={() => onClickButton(OrderStatus.Cooked)} 
+								<button
+									onClick={() => onClickButton(OrderStatus.Cooked)}
 									className='btn px-5 w-full'
 								>Order Cooked</button>
 							)}
-							{data?.getOneOrder.order?.status !== OrderStatus.Pending && 
-							 data?.getOneOrder.order?.status !== OrderStatus.Cooking && (
-								<h5 className='text-center py-10 text-2xl text-lime-600'>
-									Status: {data?.getOneOrder.order?.status}
-								</h5>
-							)}
+							{data?.getOneOrder.order?.status !== OrderStatus.Pending &&
+								data?.getOneOrder.order?.status !== OrderStatus.Cooking && (
+									<h5 className='text-center py-10 text-2xl text-lime-600'>
+										Status: {data?.getOneOrder.order?.status}
+									</h5>
+								)}
 						</div>
 					)}
 					{userData?.me.role === UserRole.Delivery && (
 						<div className='px-5 pb-5'>
 							{data?.getOneOrder.order?.status === OrderStatus.Cooked && (
-								<button 
-									onClick={() => onClickButton(OrderStatus.PickedUp)} 
+								<button
+									onClick={() => onClickButton(OrderStatus.PickedUp)}
 									className='btn px-5 w-full'
 								>Picked Up</button>
 							)}
 							{data?.getOneOrder.order?.status === OrderStatus.PickedUp && (
-								<button 
-									onClick={() => onClickButton(OrderStatus.Delivered)} 
+								<button
+									onClick={() => onClickButton(OrderStatus.Delivered)}
 									className='btn px-5 w-full'
 								>Order Delivered</button>
 							)}
@@ -160,6 +161,44 @@ export const Order = () => {
 							Thank you for using Nuber Eats.
 						</h5>
 					)}
+				</div>
+				<div className='border border-gray-800 w-full max-w-screen-sm'>
+					<h4 className='bg-gray-800 w-full py-5 text-white text-center text-xl'>
+						Order #{orderId} Detail
+					</h4>
+					<div className='p-5 grid gap-6'>
+						{data?.getOneOrder.order?.items.map(item => (
+							<div className='border-b border-black pb-6'>
+								<div className='flex justify-between text-xl'>
+									<h5>{item.dish.name}</h5>
+								</div>
+								<h6 className='indent-5 text-sm text-gray-500'>
+									{item.options?.map(option => (
+										<div>
+											{option.name} {option.choice}
+										</div>
+									))}
+								</h6>
+							</div>
+						))}
+						{data?.getOneOrder.order?.items.map(item => (
+							<div className='border-b border-black pb-6'>
+								<h5 className='text-xl'>{item.dish.name}</h5>
+								<h6 className='indent-5 text-sm text-gray-500'>
+									{item.options?.map(option => (
+										<div>
+											{option.name}
+											{option.choice && (<span> - {option.choice}</span>)}
+										</div>
+									))}
+								</h6>
+							</div>
+						))}
+					</div>
+					<div className='text-3xl px-5 pb-5 flex justify-between'>
+						<h4>Total price</h4>
+						<h4>${data?.getOneOrder.order?.total}</h4>
+					</div>
 				</div>
 			</div>
 		</div>

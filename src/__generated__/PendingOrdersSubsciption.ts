@@ -24,6 +24,23 @@ export interface PendingOrdersSubsciption_pendingOrders_restaurant {
   name: string;
 }
 
+export interface PendingOrdersSubsciption_pendingOrders_items_dish {
+  __typename: "Dish";
+  name: string;
+}
+
+export interface PendingOrdersSubsciption_pendingOrders_items_options {
+  __typename: "OrderItemOption";
+  name: string;
+  choice: string | null;
+}
+
+export interface PendingOrdersSubsciption_pendingOrders_items {
+  __typename: "OrderItem";
+  dish: PendingOrdersSubsciption_pendingOrders_items_dish;
+  options: PendingOrdersSubsciption_pendingOrders_items_options[] | null;
+}
+
 export interface PendingOrdersSubsciption_pendingOrders {
   __typename: "Order";
   id: number;
@@ -32,6 +49,7 @@ export interface PendingOrdersSubsciption_pendingOrders {
   driver: PendingOrdersSubsciption_pendingOrders_driver | null;
   customer: PendingOrdersSubsciption_pendingOrders_customer | null;
   restaurant: PendingOrdersSubsciption_pendingOrders_restaurant | null;
+  items: PendingOrdersSubsciption_pendingOrders_items[];
 }
 
 export interface PendingOrdersSubsciption {
