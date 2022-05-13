@@ -181,23 +181,10 @@ export const Order = () => {
 								</h6>
 							</div>
 						))}
-						{data?.getOneOrder.order?.items.map(item => (
-							<div className='border-b border-black pb-6'>
-								<h5 className='text-xl'>{item.dish.name}</h5>
-								<h6 className='indent-5 text-sm text-gray-500'>
-									{item.options?.map(option => (
-										<div>
-											{option.name}
-											{option.choice && (<span> - {option.choice}</span>)}
-										</div>
-									))}
-								</h6>
-							</div>
-						))}
 					</div>
 					<div className='text-3xl px-5 pb-5 flex justify-between'>
 						<h4>Total price</h4>
-						<h4>${data?.getOneOrder.order?.total}</h4>
+						<h4>${data?.getOneOrder.order?.total?.toFixed(2)}</h4>
 					</div>
 				</div>
 			</div>
