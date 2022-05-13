@@ -38,7 +38,6 @@ export const Dish: React.FC<IDishProps> = ({
 			removeFromOrder && removeFromOrder(id);
 		}
 	};
-	console.log(window.innerWidth);
 
 	return (
 		<div className={`p-3 border transition-all flex flex-col ${isSelected ? 'border-gray-800' : ''}`}>

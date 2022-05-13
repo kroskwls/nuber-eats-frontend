@@ -89,7 +89,7 @@ export const AddDish = () => {
 				}
 			});
 		} catch (error) {
-			console.log(error)
+			console.error(error)
 		}
 	};
 	const [optionsNumber, setOptionsNumber] = useState<number[]>([]);

@@ -28,7 +28,7 @@ export const Dashboard = () => {
 		setDriverCoords({ lat, lng });
 	};
 	const onError = (error: GeolocationPositionError) => {
-		console.log(error);
+		console.error(error);
 	};
 	useEffect(() => {
 		navigator.geolocation.watchPosition(onSuccess, onError, {

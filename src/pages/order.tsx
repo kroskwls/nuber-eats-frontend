@@ -73,7 +73,6 @@ export const Order = () => {
 			});
 		}
 	}, [data, orderId, subscribeToMore]);
-	console.log(userData, orderId);
 
 	return (
 		<div className='container-wrapper py-5 sm:py-32'>
