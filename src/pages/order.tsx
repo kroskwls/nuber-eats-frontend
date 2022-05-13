@@ -86,7 +86,7 @@ export const Order = () => {
 						Order #{orderId}
 					</h4>
 					<h5 className='text-center py-10 text-3xl'>
-						${data?.getOneOrder.order?.total}
+						${data?.getOneOrder.order?.total?.toFixed(2)}
 					</h5>
 					<div className='px-5 text-xl grid gap-6'>
 						<div className='border-t pt-5 border-gray-700'>
