@@ -21,7 +21,7 @@ npm i react-hook-form
 "apollo": "^2.33.9",
 "graphql": "^15.8.0",
 
-npm i apollo
+npm i apollo@^2.33.9 graphql@^15.8.0 @apollo/client
 
 apollo.config.js 파일 정의
 back-end에서 mutations, query responses, input type을 받아와서 typescript 파일로 자동 생성
